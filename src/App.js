@@ -1,25 +1,79 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// * dependencies:
+import React, { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
+
+// * utility  comp
+import PrivateRoute from './components/PrivateRoute';
+
+// * styling
+import './CSS/index.css';
+// import { bootstrap } from "react-router-dom";
+
+// * components: 
+import LoginPage from './components/LoginPage';
+import SignUpForm from './components/SignUpForm';
+
+// import logo from './logo.svg';
+// import './App.css';
 
 function App() {
+
+  // first...
+  const [ isNewUser, setNewUser ] = useState(false);
+
+  // second...
+  // const [ token, setToken] = useState(localStorage.getItem("token") || null);
+
+
+
+  // * sets local state if user selects new user
+
+  // frist option.. 
+  const launchSignUp = (event) => {
+    event.preventDefault()
+    setIsNewUser(true);
+  }
+  console.log("is it working")
+
   return (
+
+  //first option...
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+          <Route exact path='/'>
+            {/* * conditionally renders form based on local state isNewUser */}
+            {isNewUser
+              ? 
+                <SignUpForm /> 
+              :
+                <div>
+                  <button 
+                  className='app-container__button'
+                  onClick={launchSignUp}
+                  > I'm a New User </button> 
+                  <LoginPage />
+                </div>
+            }
+          </Route>
+          <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} />
+          {/* <Route path='/sleeptracker' component={SleepTrackerList} /> */}
+      </Switch>
+      <MainObject />
     </div>
+
+// second easier option..
+    // <div className="App">
+    // <Route exact path="/">
+    //   <Login token={token} setToken={setToken} />
+    // </Route>  
+        
+    //     {/* 
+    //       Build a PrivateRoute component that will 
+    //       display SleepTrackerPage when you're authenticated 
+    //     */}
+    //     <PrivateRoute path="/sleeptracker-page" component={SleepTrackerPage} />
+    //   </div>
+
   );
 }
 
