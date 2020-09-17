@@ -1,3 +1,5 @@
+READ: Now that I'm in the correct project I will be adding the dependancies over night. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
