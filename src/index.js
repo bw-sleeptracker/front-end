@@ -11,9 +11,9 @@ import App from './App';
 
 
 ReactDOM.render(
-  <React>
+  <Router>
     <App />
-  </React>,
+  </Router>,
   document.getElementById('root')
 );
 

@@ -6,7 +6,8 @@ import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 
 // * styling
-import './CSS/index.css';
+// commented out because of no css folder
+// import './CSS/index.css';
 // import { bootstrap } from "react-router-dom";
 
 // * components: 
@@ -31,7 +32,7 @@ function App() {
   // frist option.. 
   const launchSignUp = (event) => {
     event.preventDefault()
-    setIsNewUser(true);
+    setNewUser(true);
   }
   console.log("is it working")
 
@@ -55,10 +56,12 @@ function App() {
                 </div>
             }
           </Route>
-          <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} />
-          {/* <Route path='/sleeptracker' component={SleepTrackerList} /> */}
+          {/* need to make a component for SleepTrackList}
+          {/* <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
+          
       </Switch>
-      <MainObject />
+      {/* need to make a component for MainObject}
+      {/* <MainObject /> */}
     </div>
 
 // second easier option..
