@@ -8,7 +8,7 @@ import PrivateRoute from './components/PrivateRoute';
 // * styling
 // commented out because of no css folder
 // import './CSS/index.css';
-// import { bootstrap } from "react-router-dom";
+import { bootstrap } from "react-router-dom";
 
 // * components: 
 import LoginPage from './components/LoginPage';
