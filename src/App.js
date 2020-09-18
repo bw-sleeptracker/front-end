@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // * utility  comp
-import PrivateRoute from './components/PrivateRoute';
+// import PrivateRoute from './components/PrivateRoute';
 
 // * styling
 // commented out because of no css folder
