@@ -1,9 +1,8 @@
 // * dependencies 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-// import pizza from "../images/Pizza.jpg";
 import styled from "styled-components";
 
 const formSchema = yup.object().shape({
@@ -84,9 +83,10 @@ const LoginPage = (props) => {
     `;
   
   return (
-        <>
-          <Login>
-           <form onSubmit={formSubmit}>
+    <Route> 
+             <Login>
+                <h1>SLEEP-TRACKER LOGIN HERE!</h1>
+            <form onSubmit={formSubmit}>
             <label htmlFor="name">
               Name
               <input
@@ -117,12 +117,12 @@ const LoginPage = (props) => {
             </label>
             <Link to="/pizza-form/">
               <button disabled={buttonDisabled} type="submit">
-                Begin Order
+                LOG IN!
               </button>
             </Link>{" "}
           </form>
           </Login>
-        </>
+    </Route>
       );
     };
 export default LoginPage;
