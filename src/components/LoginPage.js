@@ -76,16 +76,19 @@ const LoginPage = (props) => {
     setFormState(newFormData);
   };
   const Login = styled.div`
-    display: flex,
-    flex-direction: column,
-    justify-content: center,
-    align-items: center
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  color: #3d040b;
     `;
   
   return (
     <Route> 
-             <Login>
-                <h1>SLEEP-TRACKER LOGIN HERE!</h1>
+        <>
+         <Login>
+            <h1>SLEEP-TRACKER LOGIN HERE!</h1>
             <form onSubmit={formSubmit}>
             <label htmlFor="name">
               Name
@@ -122,6 +125,7 @@ const LoginPage = (props) => {
             </Link>{" "}
           </form>
           </Login>
+          </>
     </Route>
       );
     };
