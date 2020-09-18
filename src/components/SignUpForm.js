@@ -84,14 +84,14 @@ export default function SignUpForm() {
     <Route> 
         <>
         <FormHeader>
-        <h2>Order Form</h2>
+        <h1>SLEEP-TRACKER SIGNUP HERE!</h1>
         <div className="home-button">
           <Link to="/">
             <button>Home</button>
           </Link>{" "}
         </div>
-        </FormHeader>
-        </>
+        <br/><br/>
+        
         <form className="info" onSubmit={submitHandler}>
             <label htmlFor="firstname=">
           First Name:
@@ -107,7 +107,7 @@ export default function SignUpForm() {
             <p className="error">{errorState.firstname}</p>
           ) : null}
             </label>
-  
+              <br/><br/>
             <label htmlFor="lastname">
           Last Name:
           <input
@@ -122,7 +122,7 @@ export default function SignUpForm() {
             <p className="error">{errorState.lastname}</p>
           ) : null}
             </label>
-  
+            <br/> <br/>
             <label htmlFor="username">
           User Name:
           <input
@@ -137,7 +137,8 @@ export default function SignUpForm() {
             <p className="error">{errorState.username}</p>
           ) : null}
             </label>
-  
+            <br/><br/>
+
             <label htmlFor="password">
           Password:
           <input
@@ -152,10 +153,13 @@ export default function SignUpForm() {
             <p className="error">{errorState.password}</p>
           ) : null}
             </label>
+            <br/><br/>
         <button className="formbutton" type="submit">
           Submit
         </button>
       </form>
-    </Route>
+    </FormHeader>
+    </>
+  </Route>
     );
   }
