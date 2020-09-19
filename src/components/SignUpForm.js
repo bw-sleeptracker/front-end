@@ -86,7 +86,7 @@ export default function SignUpForm() {
         <FormHeader>
         <h1>SLEEP-TRACKER SIGNUP HERE!</h1>
         <div className="home-button">
-          <Link to="/">
+          <Link to="">
             <button>Home</button>
           </Link>{" "}
         </div>
@@ -154,11 +154,14 @@ export default function SignUpForm() {
           ) : null}
             </label>
             <br/><br/>
+
+      <Link to="/">
         <button className="formbutton" type="submit">
           Submit
         </button>
-      </form>
-    </FormHeader>
+      </Link>{" "}
+         </form>
+      </FormHeader>
     </>
   </Route>
     );

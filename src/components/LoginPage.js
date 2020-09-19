@@ -104,6 +104,7 @@ const LoginPage = (props) => {
                 <p className="error">{errors.name}</p>
               ) : null}
             </label>
+            <br/><br/>
             <label htmlFor="email">
               Email
               <input
@@ -117,8 +118,9 @@ const LoginPage = (props) => {
               {errors.email.length > 0 ? (
                 <p className="error">{errors.email}</p>
               ) : null}
-            </label>
-            <Link to="/pizza-form/">
+            </label><br/>
+            <br/>
+            <Link to="/">
               <button disabled={buttonDisabled} type="submit">
                 LOG IN!
               </button>
