@@ -1,6 +1,7 @@
 // * dependencies:
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import AddSleep from "./components/AddSleep"
 
 // * utility  comp
 import PrivateRoute from './components/PrivateRoute';
@@ -38,6 +39,7 @@ function App() {
 
   return (
 
+
   //first option...
     <div className="App">
       <Switch>
@@ -53,6 +55,7 @@ function App() {
                   onClick={launchSignUp}
                   > I'm a New User </button> 
                   <LoginPage />
+                  <AddSleep/>
                 </div>
             }
           </Route>
