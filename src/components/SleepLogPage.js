@@ -39,8 +39,8 @@ const SleepLogPage = (props) => {
   return (
       //waiting the SleepLogList component to be made, or whatever it gets called.
     <>
-      <h1>Just Making Magic!!!</h1>
-      <AddandEdit sleep={addAndEdit} updateSleepLog={setAddandEdit} />
+     <h1>Just Making Magic!!!</h1>
+     {/* <AddandEdit sleep={addAndEdit} updateSleepLog={setAddandEdit} /> */}
       
     </>
   );
