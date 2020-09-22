@@ -1,7 +1,8 @@
 // * dependencies:
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 import AddSleep from "./components/AddSleep"
+import BedTime from "./components/BedTime"
 
 // * utility  comp
 import PrivateRoute from './components/PrivateRoute';
@@ -42,6 +43,11 @@ function App() {
 
   //first option...
     <div className="App">
+
+<nav class="navbar navbar-dark bg-dark">
+<Link to="/addSleep">Add Sleep</Link>
+</nav>
+
       <Switch>
           <Route exact path='/'>
             {/* * conditionally renders form based on local state isNewUser */}

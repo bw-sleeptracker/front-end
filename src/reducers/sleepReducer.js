@@ -1,6 +1,7 @@
 const initialState = {
-    formValues: {},
-    inputs: ""
+  isLoading:false,
+  error:"",
+  sleepLog:{}
   };
   
   const sleepReducer = (state = initialState, action) => {
@@ -10,13 +11,22 @@ const initialState = {
           ...state,
           formValues: action.payload
         };
-      case "SUBMIT_FORM":
-        console.log("Form submission ---");
-        console.log("Form Data - ", state.formValues);
-        return {
+      case "POST_SLEEP_START":
+     return {
           ...state,
-          message: "Form submitted!!"
-        };
+          isLoading: true };
+
+          case "POST_SLEEP_SUCCESS":
+            return {
+                 ...state,
+                 isLoading: false,
+                 sleepLog:action.paylod };
+
+                 case "POST_SLEEP_ERROR":
+                  return {
+                       ...state,
+                       isLoading: false,
+                       error:action.paylod };
       default:
         return state;
     }

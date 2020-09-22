@@ -7,7 +7,7 @@ export const SUBMIT_FORM="SUBMIT_FORM";
 export const getSleep=()=>(dispatch)=>{ 
    
     dispatch({ type: "SET_FORMVALUES" });
-    axiosWithAuth.get(" https://sleep-tracker-backend.herokuapp.com/day/current-user")
+    axiosWithAuth.get(" day/current-user")
     .then((res)=>{ dispatch({ type:SET_FORMVALUES,  payload:res.data });
     console.log(res)
 })
@@ -15,12 +15,19 @@ export const getSleep=()=>(dispatch)=>{
 
 
 
-export const createSlep=()=>(dispatch)=>{
-    dispatch ({type: "SUBMIT_FORM"})
+export const createSlep=(day)=>(dispatch)=>{
+    dispatch ({type: "POST_SLEEP_START"})
     axiosWithAuth()
-    .post("https://sleep-tracker-backend.herokuapp.com/")
-  
+    .post("https://sleep-tracker-backend.herokuapp.com/",day)
+    .then(res=> {
+        console.log(res)
+        dispatch ({type: "POST_SLEEP_SUCCESS",paylod:res.data})
+    })
+   .catch(err=>{
+       console.log(err)
+       dispatch ({type: "POST_SLEEP_ERROR",paylod:err})
+   })
    
-    
-  
-}     
+
+} 
+// day/current-user

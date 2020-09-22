@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {connect} from "react-redux"
 import * as yup from "yup";
 
-import {getSleep} from "../Action/sleepAction"
+import {createSlep} from "../Action/sleepAction"
 
 
 const AddSleep = (props) => {
@@ -93,7 +93,7 @@ const AddSleep = (props) => {
         sleepEnd: "",
         moodBeforeSleep: "",
       });
-      props.getSleep(entry)
+      props.createSlep(entry)
       console.log(submitHandeler)
    
   };
@@ -174,7 +174,7 @@ console.log(entry)
   );
 };
 const mapDispatchToPrios ={
-    getSleep
+    createSlep
 }
  
 export default connect (null, mapDispatchToPrios)(AddSleep)

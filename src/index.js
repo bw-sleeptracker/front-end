@@ -8,6 +8,10 @@ import thunk from "redux-thunk"
 import './index.css';
 import  sleepReducer  from "./reducers/sleepReducer";
 
+import './index.css';
+// import * as serviceWorker from './serviceWorker';
+
+// * components:
 import App from './App';
 
 const store = createStore(sleepReducer,  applyMiddleware(thunk));
