@@ -1,6 +1,6 @@
 // * dependencies:
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 // * utility  comp
 // import PrivateRoute from './components/PrivateRoute';
@@ -13,6 +13,7 @@ import { bootstrap } from "react-router-dom";
 // * components: 
 import LoginPage from './components/LoginPage';
 import SignUpForm from './components/SignUpForm';
+import MainObject from './components/MainObject';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -40,28 +41,26 @@ function App() {
 
   //first option...
     <div className="App">
+      <Link to='/login'>
+      Login
+      </Link>
+      <Link to='/register'>
+      Sign Up
+      </Link>
       <Switch>
-          <Route exact path='/'>
-            {/* * conditionally renders form based on local state isNewUser */}
-            {isNewUser
-              ? 
-                <SignUpForm /> 
-              :
-                <div>
-                  <button 
-                  className='app-container__button'
-                  onClick={launchSignUp}
-                  > I'm a New User </button> 
-                  <LoginPage />
-                </div>
-            }
-          </Route>
-          {/* need to make a component for SleepTrackList}
-          {/* <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
+          <Route path='/login'>
+          <LoginPage />
+            </Route>
+            <Route path='/register'>
+            <LoginPage />
+            </Route>
+          {/* {/* need to make a component for SleepTrackList}
+           <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
           
       </Switch>
-      {/* need to make a component for MainObject}
-      {/* <MainObject /> */}
+       <Route path="/sleep-tracker">
+        <MainObject />
+       </ Route> 
     </div>
 
 // second easier option..

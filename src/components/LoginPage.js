@@ -1,27 +1,28 @@
 // * dependencies 
 import React, { useState, useEffect } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link , useHistory} from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
 const formSchema = yup.object().shape({
-  name: yup.string().required("full name please"),
-  email: yup.string().email().required("valid email please"),
+  username: yup.string().required("full username please"),
+  password: yup.string().required("valid password please"),
 });
 
 const LoginPage = (props) => {
+    const history = useHistory()
   const [formState, setFormState] = useState({
-    name: "",
-    email: "",
+    username: "",
+    password: "",
   });
 
   const [errors, setErrors] = useState({
-    name: "",
-    email: "",
+    username: "",
+    password: "",
   });
 
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
 
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
@@ -48,33 +49,44 @@ const LoginPage = (props) => {
   };
 
   // eslint-disable-next-line no-unused-vars
-  const [name, setName] = useState([]);
+  // user name and password
+//   const [name, setName] = useState([]);
 
   const formSubmit = (event) => {
+      
     event.preventDefault();
     axios
-      .post("https://reqres.in/api/users", formState)
-      .then((response) => {
-        setName(response.data);
+    .post("https://sleep-tracker-backend.herokuapp.com/auth/login", formState)
+    .then((response) => {
+      console.log(response);
 
-        setFormState({
-          name: "",
-        });
-      })
-      .catch((err) => {
-        console.log(err.response);
+      
+    })
+    .catch((err) => {
+      console.log(err.response);
+    });
+    
+      setFormState({
+        username: "",
+        password: ""
       });
+      history.push('/sleep-tracker')
   };
-
   const inputChange = (event) => {
     event.persist();
-    const newFormData = {
-      ...formState,
-      [event.target.name]: event.target.value,
-    };
-    validateChange(event);
-    setFormState(newFormData);
+    setFormState( {
+        ...formState,
+        [event.target.name]: event.target.value, 
+    })
+    // const newFormData = {
+    //   ...formState,
+    //   [event.target.name]: event.target.value,
+    // };
+    // validateChange(event);
+    // setFormState(newFormData);
+
   };
+
   const Login = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,46 +99,44 @@ const LoginPage = (props) => {
   return (
     <Route> 
         <>
-         <Login>
+         {/* <Login> */}
             <h1>SLEEP-TRACKER LOGIN HERE!</h1>
-            <form onSubmit={formSubmit}>
+            <form >
             <label htmlFor="name">
-              Name
+              Username
               <input
                 id="name"
                 type="text"
-                name="name"
-                value={formState.name}
+                name="username"
+                value={formState.username}
                 onChange={inputChange}
-                data-cy="name"
+                data-cy="username"
               />
-              {errors.name.length > 0 ? (
-                <p className="error">{errors.name}</p>
+              {errors.username.length > 0 ? (
+                <p className="error">{errors.username}</p>
               ) : null}
             </label>
             <br/><br/>
-            <label htmlFor="email">
-              Email
+            <label htmlFor="password">
+              Password
               <input
-                id="email"
+                id="password"
                 type="text"
-                name="email"
-                value={formState.email}
+                name="password"
+                value={formState.password}
                 onChange={inputChange}
-                data-cy="email"
+                data-cy="password"
               />
-              {errors.email.length > 0 ? (
-                <p className="error">{errors.email}</p>
+              {errors.password.length > 0 ? (
+                <p className="error">{errors.password}</p>
               ) : null}
             </label><br/>
             <br/>
-            <Link to="/">
-              <button disabled={buttonDisabled} type="submit">
+              <button type="submit"onClick={formSubmit}>
                 LOG IN!
               </button>
-            </Link>{" "}
           </form>
-          </Login>
+          {/* </Login> */}
           </>
     </Route>
       );
