@@ -7,8 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 
 // * styling
 // commented out because of no css folder
-// import './CSS/index.css';
-import { bootstrap } from "react-router-dom";
+import './index.css';
 
 // * components: 
 import LoginPage from './components/LoginPage';

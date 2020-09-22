@@ -1,6 +1,6 @@
 // dependancies
 import React, { useState } from "react";
-import { Route, Link } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
@@ -81,6 +81,7 @@ export default function SignUpForm() {
     `;
 
     return (
+      <Switch>
     <Route> 
         <>
         <FormHeader>
@@ -164,5 +165,6 @@ export default function SignUpForm() {
       </FormHeader>
     </>
   </Route>
+  </Switch>
     );
   }
