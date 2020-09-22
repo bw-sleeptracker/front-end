@@ -87,7 +87,7 @@ export default function SignUpForm() {
         <FormHeader>
         <h1>SLEEP-TRACKER SIGNUP HERE!</h1>
         <div className="home-button">
-          <Link to="">
+          <Link to="/">
             <button>Home</button>
           </Link>{" "}
         </div>
@@ -159,6 +159,12 @@ export default function SignUpForm() {
       <Link to="/">
         <button className="formbutton" type="submit">
           Submit
+        </button>
+      </Link>{" "}
+
+      <Link to="/">
+        <button className="formbutton" type="text">
+          Reset Form?
         </button>
       </Link>{" "}
          </form>
