@@ -62,7 +62,7 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
           <p>Date: {moment(log.date).format("L")}</p>
           <p>Bedtime: {formattedBedTime}</p>
           <p>Wake Time: {formattedWakeTime}</p>
-          <p>Total Hours Slept: {log.total_hour_slept}</p>
+          <p>Total Hours Slept: {log.total_hours_slept}</p>
           <p>Average Quality: {log.average_quality}</p>
         </div>
       )
