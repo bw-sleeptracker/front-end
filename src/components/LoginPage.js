@@ -1,28 +1,27 @@
 // * dependencies 
 import React, { useState, useEffect } from "react";
-import { Route, Link , useHistory} from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 const formSchema = yup.object().shape({
-  username: yup.string().required("full username please"),
-  password: yup.string().required("valid password please"),
+  name: yup.string().required("full name please"),
+  email: yup.string().email().required("valid email please"),
 });
 
 const LoginPage = (props) => {
-    const history = useHistory()
   const [formState, setFormState] = useState({
-    username: "",
-    password: "",
+    name: "",
+    email: "",
   });
 
   const [errors, setErrors] = useState({
-    username: "",
-    password: "",
+    name: "",
+    email: "",
   });
 
-  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   useEffect(() => {
     formSchema.isValid(formState).then((valid) => {
@@ -48,95 +47,79 @@ const LoginPage = (props) => {
       });
   };
 
+
   // eslint-disable-next-line no-unused-vars
-  // user name and password
-//   const [name, setName] = useState([]);
+  const [name, setName] = useState([]);
 
   const formSubmit = (event) => {
-      
     event.preventDefault();
     axios
-    .post("https://sleep-tracker-backend.herokuapp.com/auth/login", formState)
-    .then((response) => {
-      console.log(response);
+      .post("https://reqres.in/api/users", formState)
+      .then((response) => {
+        setName(response.data);
 
-      
-    })
-    .catch((err) => {
-      console.log(err.response);
-    });
-    
-      setFormState({
-        username: "",
-        password: ""
+        setFormState({
+          name: "",
+        });
+      })
+      .catch((err) => {
+        console.log(err.response);
       });
-      history.push('/sleep-tracker')
   };
+
   const inputChange = (event) => {
     event.persist();
-    setFormState( {
-        ...formState,
-        [event.target.name]: event.target.value, 
-    })
-    // const newFormData = {
-    //   ...formState,
-    //   [event.target.name]: event.target.value,
-    // };
-    // validateChange(event);
-    // setFormState(newFormData);
-
+    const newFormData = {
+      ...formState,
+      [event.target.name]: event.target.value,
+    };
+    validateChange(event);
+    setFormState(newFormData);
   };
-
-  const Login = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3%;
-  color: #3d040b;
-    `;
   
   return (
     <Route> 
         <>
-         {/* <Login> */}
+        
             <h1>SLEEP-TRACKER LOGIN HERE!</h1>
-            <form >
+            <form onSubmit={formSubmit}>
             <label htmlFor="name">
-              Username
+              Name
               <input
                 id="name"
                 type="text"
-                name="username"
-                value={formState.username}
+                name="name"
+                value={formState.name}
                 onChange={inputChange}
-                data-cy="username"
+                data-cy="name"
               />
-              {errors.username.length > 0 ? (
-                <p className="error">{errors.username}</p>
+              {errors.name.length > 0 ? (
+                <p className="error">{errors.name}</p>
               ) : null}
             </label>
             <br/><br/>
-            <label htmlFor="password">
-              Password
+            <label htmlFor="email">
+              Email
               <input
-                id="password"
+                id="email"
                 type="text"
-                name="password"
-                value={formState.password}
+                name="email"
+                value={formState.email}
                 onChange={inputChange}
-                data-cy="password"
+                data-cy="email"
               />
-              {errors.password.length > 0 ? (
-                <p className="error">{errors.password}</p>
+              {errors.email.length > 0 ? (
+                <p className="error">{errors.email}</p>
               ) : null}
             </label><br/>
             <br/>
-              <button type="submit"onClick={formSubmit}>
+            <Link to="/">
+              <button disabled={buttonDisabled} type="submit">
                 LOG IN!
               </button>
+            </Link>{" "}
           </form>
-          {/* </Login> */}
+      
           </>
     </Route>
       );

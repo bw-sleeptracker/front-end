@@ -1,9 +1,11 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 // dependancies
 import React, { useState } from "react";
 import { Route, Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-import styled from "styled-components";
+// import styled from "styled-components";
 
 // working on Yup
  const fromSchema = yup.object().shape({
@@ -68,6 +70,7 @@ export default function SignUpForm() {
       setForms({ ...forms, [e.target.name]: e.target.value });
     };
   
+   
     const FormHeader = styled.div`
     display: flex;
     flex-direction: column;
