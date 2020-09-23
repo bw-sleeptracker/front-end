@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
 // * utility  comp
-// import PrivateRoute from './components/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
 
 // * styling
 // commented out because of no css folder
@@ -14,7 +14,7 @@ import { bootstrap } from "react-router-dom";
 import LoginPage from './components/LoginPage';
 import SignUpForm from './components/SignUpForm';
 import MainObject from './components/MainObject';
-
+import SleepLogPage from './components/SleepLogPage'
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -52,15 +52,16 @@ function App() {
           <LoginPage />
             </Route>
             <Route path='/register'>
-            <LoginPage />
+              <SignUpForm />
             </Route>
           {/* {/* need to make a component for SleepTrackList}
            <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
           
       </Switch>
-       <Route path="/sleep-tracker">
-        <MainObject />
-       </ Route> 
+       <PrivateRoute path="/sleep-tracker"component={MainObject}/>
+       
+       <PrivateRoute path="/day-logs"component={SleepLogPage}/>
+    
     </div>
 
 // second easier option..
