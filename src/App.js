@@ -14,7 +14,9 @@ import { bootstrap } from "react-router-dom";
 import LoginPage from './components/LoginPage';
 import SignUpForm from './components/SignUpForm';
 import MainObject from './components/MainObject';
-import SleepLogPage from './components/SleepLogPage'
+import SleepLogPage from './components/SleepLogPage';
+import styled from 'styled-components';
+
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -80,4 +82,7 @@ function App() {
   );
 }
 
+const AppContainer = styled.div`
+  background: ##A8D0E6;
+`
 export default App;
