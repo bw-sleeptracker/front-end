@@ -128,9 +128,9 @@ function MainObject() {
               4
           </label>
         </fieldset>
-        <Link to="/">
+        
             <button data-cy="submit-button" type='submit'>Submit</button>
-        </Link>{" "}
+        
 </form>
        
     )
