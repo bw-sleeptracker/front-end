@@ -1,10 +1,12 @@
 const initialState = {
   isLoading:false,
   error:"",
-  sleepLog:{}
+  sleepLog:{},
+  activeLogId:""
   };
   
   const sleepReducer = (state = initialState, action) => {
+    console.log(initialState)
     switch (action.type) {
       case "SET_FORMVALUES":
         return {
@@ -20,7 +22,7 @@ const initialState = {
             return {
                  ...state,
                  isLoading: false,
-                 sleepLog:action.paylod };
+                 sleepLog:action.paylod, activeLogId:action.paylod.id};
 
                  case "POST_SLEEP_ERROR":
                   return {

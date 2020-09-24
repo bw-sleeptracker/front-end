@@ -5,7 +5,7 @@ import {createSlep} from "../Action/sleepAction"
 
 const BedTime=(props)=>{
     const [time, setTime]= useState()
-
+console.log(props.activeLogId)
 
 const handelSubmit=(e)=>{
 e.preventDefault();
@@ -24,4 +24,12 @@ setTime(e.target.value)
        </form>
     )
 }
-export default connect(null,{createSlep})(BedTime);
+
+const mapStateToProps=state=>{
+    return{activeLogId:state.activeLogId}
+  }
+ 
+  
+
+  
+export default connect(mapStateToProps,{createSlep})(BedTime);
