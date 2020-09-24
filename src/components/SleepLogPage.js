@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 //waiting the SleepLogList component to be made, or whatever it gets called.
 // import AddandEdit from "./AddandEdit";
-
+{/* <SleepLogPageContainer> */}
 const SleepLogPage = (props) => {
     const [dayLogs, setDayLogs] = useState([]);
     const [weekLogs, setWeekLogs] = useState([]);
@@ -55,10 +55,10 @@ const dayView = (
     dayLogs.map(log =>{
 const bedtime = new Date(`2020-09-18T${log.bedtime}`).getTime()
 const formattedBedTime = moment(bedtime).format('hh:mm:A')
-      const wakeTime = new Date(`2020-09-18T${log.wake_time}`).getTime()
+const wakeTime = new Date(`2020-09-18T${log.wake_time}`).getTime()
 const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
       return(
-        <div id={log.id}>
+        <div key={log.id}>
           <p>Date: {moment(log.date).format("L")}</p>
           <p>Bedtime: {formattedBedTime}</p>
           <p>Wake Time: {formattedWakeTime}</p>
@@ -72,7 +72,7 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
     weekLogs && 
     weekLogs.map(log =>{
       return(
-        <div id={log.id}>
+        <div key={log.id}>
           <p>Week of Year: {log.week_of_year}</p>
           <p>Average Hours Slept: {log.average_hours_slept}</p>
           <p>Average Quality: {log.average_quality}</p>
@@ -85,7 +85,7 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
     monthLogs && 
     monthLogs.map(log =>{
       return(
-        <div id={log.id}>
+        <div key={log.id}>
           <p>Month of Year: {log.month_of_year}</p>
           <p>Average Hours Slept: {log.average_hours_slept}</p>
           <p>Average Quality: {log.average_quality}</p>
@@ -97,9 +97,9 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
   return (
       //waiting the SleepLogList component to be made, or whatever it gets called.
     <>
-    <button onClick={getDays}>Show Days</button>
-    <button onClick={getWeeks}>Show Weeks</button>
-    <button onClick={getMonths}>Show Months</button>
+    <Button onClick={getDays}>Show Days</Button>
+    <Button onClick={getWeeks}>Show Weeks</Button>
+    <Button onClick={getMonths}>Show Months</Button>
     {
        view==="day" ?(dayView): view==="week" ? (weekView): view==="month" ? (monthView): (<p>Select Logs You Want to</p>)
     }
@@ -108,12 +108,12 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
   );
 };
 
-
-// const SleepLogPageContainer = styled.div`
+// const SleepLog = styled.div`
 //   align-items: center;
 //   background: dodger-blue;
 // `
 // const Button = styled.button`
+  
 //   background: transparent;
 //   border-radius: 3px;
 //   border: 2px solid palevioletred;
@@ -122,3 +122,4 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
 //   padding: 0.25em 1em;
 // `
 export default SleepLogPage;
+
