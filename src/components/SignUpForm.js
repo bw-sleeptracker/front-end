@@ -1,31 +1,28 @@
 // dependancies
 import React, { useState } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 
 // working on Yup
  const fromSchema = yup.object().shape({
-    firstname: yup.string().required("Name is required"),
-    lastname: yup.string().required("Last Name is required"),
     username: yup.string().required("User Name is required"),
     password: yup.string().required("Password is Required"),
+    email: yup.string().email().required("Email is required"),
   });
 
 export default function SignUpForm() {
-
+    const history = useHistory()
     const [forms, setForms] = useState({
-      firstname: "",
-      lastname: "",
+      email: "",
       username: "",
       password: ""
     });
     
     // making error state
     const [errorState, setErrorState] = useState({
-      firstname: "",
-      lastname: "",
+        email: "",
       username: "",
       password: ""
     });
@@ -57,9 +54,10 @@ export default function SignUpForm() {
       console.log("form submitted!");
   
       axios
-        .post("", forms)
+        .post("https://sleep-tracker-backend.herokuapp.com/auth/register", forms)
         .then((response) => console.log(response))
         .catch((err) => console.log(err));
+        history.push("/login")
     };
   
     // 
@@ -67,8 +65,7 @@ export default function SignUpForm() {
       //  console.log(myOnChange)
       e.persist();
       validate(e);
-      let value = e.target.name === "name" ? e.target.text : e.target.value;
-      setForms({ ...forms, [e.target.name]: value });
+      setForms({ ...forms, [e.target.name]: e.target.value });
     };
   
     const FormHeader = styled.div`
@@ -83,7 +80,7 @@ export default function SignUpForm() {
     return (
     <Route> 
         <>
-        <FormHeader>
+        
         <h1>SLEEP-TRACKER SIGNUP HERE!</h1>
         <div className="home-button">
           <Link to="">
@@ -92,44 +89,14 @@ export default function SignUpForm() {
         </div>
         <br/><br/>
         
-        <form className="info" onSubmit={submitHandler}>
-            <label htmlFor="firstname=">
-          First Name:
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            placeholder="First Name"
-            value={forms.firstname}
-            onChange={myOnChange}
-          />
-          {errorState.firstname.length > 0 ? (
-            <p className="error">{errorState.firstname}</p>
-          ) : null}
-            </label>
-              <br/><br/>
-            <label htmlFor="lastname">
-          Last Name:
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            placeholder="Last Name"
-            value={forms.lastname}
-            onChange={myOnChange}
-          />
-          {errorState.lastname.length > 0 ? (
-            <p className="error">{errorState.lastname}</p>
-          ) : null}
-            </label>
-            <br/> <br/>
+        <form className="info" >
             <label htmlFor="username">
-          User Name:
+          Username:
           <input
             type="text"
             name="username"
             id="username"
-            placeholder="User Name"
+            placeholder="Username"
             value={forms.username}
             onChange={myOnChange}
           />
@@ -137,7 +104,22 @@ export default function SignUpForm() {
             <p className="error">{errorState.username}</p>
           ) : null}
             </label>
-            <br/><br/>
+              <br/><br/>
+            <label htmlFor="email">
+          Email:
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Email"
+            value={forms.email}
+            onChange={myOnChange}
+          />
+          {errorState.email.length > 0 ? (
+            <p className="error">{errorState.email}</p>
+          ) : null}
+            </label>
+            <br/> <br/>
 
             <label htmlFor="password">
           Password:
@@ -155,13 +137,13 @@ export default function SignUpForm() {
             </label>
             <br/><br/>
 
-      <Link to="/">
-        <button className="formbutton" type="submit">
+     
+        <button className="formbutton" type="submit"onClick={submitHandler}>
           Submit
         </button>
-      </Link>{" "}
+      
          </form>
-      </FormHeader>
+     
     </>
   </Route>
     );

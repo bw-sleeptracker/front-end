@@ -1,4 +1,6 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+
 
 body {
   margin: 0;
@@ -33,3 +35,17 @@ code {
   padding: 20x;
 }
 
+nav{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 36px;
+  padding: 12px;
+
+}
+
+a {
+  text-decoration: none;
+  padding: 8px;
+  color: black;
+  font-weight: bold;
+}

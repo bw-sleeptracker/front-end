@@ -1,7 +1,7 @@
 // * dependencies:
 import React, { useState } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
-import AddSleep from "./components/AddSleep"
+import EditSleep from "./components/EditSleep"
 import BedTime from "./components/BedTime"
 
 // * utility  comp
@@ -15,6 +15,7 @@ import PrivateRoute from './components/PrivateRoute';
 // * components: 
 import LoginPage from './components/LoginPage';
 import SignUpForm from './components/SignUpForm';
+import MainObject from './components/MainObject';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -45,32 +46,58 @@ function App() {
     <div className="App">
 
 <nav class="navbar navbar-dark bg-dark">
-<Link to="/addSleep">Add Sleep</Link>
+{/* <Link to="/editsleep">Edit Sleep</Link>
+<Link to="/bedtime">Bed Time</Link> */}
+<Link to='/login'> Login </Link>
+<Link to='/register'> Sign Up</Link>
 </nav>
 
-      <Switch>
+      {/* <Switch>
           <Route exact path='/'>
-            {/* * conditionally renders form based on local state isNewUser */}
-            {isNewUser
-              ? 
-                <SignUpForm /> 
-              :
-                <div>
-                  <button 
-                  className='app-container__button'
-                  onClick={launchSignUp}
-                  > I'm a New User </button> 
-                  <LoginPage />
-                  <AddSleep/>
-                </div>
-            }
-          </Route>
+          //   {/* * conditionally renders form based on local state isNewUser 
+          //   {isNewUser 
+          // //     ? 
+          // //       <SignUpForm /> 
+          // //     :
+          // //       <div>
+          // //         <button 
+          //         className='app-container__button'
+          //         onClick={launchSignUp}
+          //         > I'm a New User </button> 
+          //         <LoginPage />
+          //         <AddSleep/>
+          //       </div>
+          //   }
+          // </Route>
           {/* need to make a component for SleepTrackList}
-          {/* <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
-          
+          <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} />
+        */}
+      {/* <Link to='/login'>
+      Login
+      </Link> */}
+      {/* <Link to='/register'>
+      Sign Up
+      </Link> */}
+      <Switch>
+
+      <Route path='/editsleep'>
+        <EditSleep/>
+        </Route>
+          <Route path='/login'>
+          <LoginPage />
+            </Route>
+            <Route path='/register'>
+            <LoginPage />
+            </Route>
+          {/* {/* need to make a component for SleepTrackList}
+           <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
+          <Route path="/bedtime">
+            <BedTime/>
+          </Route>
       </Switch>
-      {/* need to make a component for MainObject}
-      {/* <MainObject /> */}
+       <Route path="/sleep-tracker">
+        <MainObject />
+       </ Route> 
     </div>
 
 // second easier option..

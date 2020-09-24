@@ -18,7 +18,7 @@ export const getSleep=()=>(dispatch)=>{
 export const createSlep=(day)=>(dispatch)=>{
     dispatch ({type: "POST_SLEEP_START"})
     axiosWithAuth()
-    .post("https://sleep-tracker-backend.herokuapp.com/",day)
+    .post("day/current-user",day)
     .then(res=> {
         console.log(res)
         dispatch ({type: "POST_SLEEP_SUCCESS",paylod:res.data})
