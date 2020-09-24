@@ -32,7 +32,7 @@ function App() {
 
   // * sets local state if user selects new user
 
-  // frist option.. 
+  // first option.. 
   const launchSignUp = (event) => {
     event.preventDefault()
     setNewUser(true);
