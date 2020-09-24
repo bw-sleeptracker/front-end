@@ -6,8 +6,8 @@ import { Switch, Route, Link } from 'react-router-dom';
 // import PrivateRoute from './components/PrivateRoute';
 
 // * styling
-// commented out because of no css folder
-// import './CSS/index.css';
+// import logo from './logo.svg';
+
 import { bootstrap } from "react-router-dom";
 
 // * components: 
@@ -15,8 +15,8 @@ import LoginPage from './components/LoginPage';
 import SignUpForm from './components/SignUpForm';
 import MainObject from './components/MainObject';
 
-// import logo from './logo.svg';
-// import './App.css';
+
+import './App.css';
 
 function App() {
 

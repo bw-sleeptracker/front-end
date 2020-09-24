@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-// import styled from "styled-components";
+import styled from "styled-components";
 
 const formSchema = yup.object().shape({
   name: yup.string().required("full name please"),
@@ -47,7 +47,14 @@ const LoginPage = (props) => {
       });
   };
 
-
+  const Login = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  color: #3d040b;
+    `;
   // eslint-disable-next-line no-unused-vars
   const [name, setName] = useState([]);
 
@@ -77,8 +84,10 @@ const LoginPage = (props) => {
     setFormState(newFormData);
   };
   
+
   return (
     <Route> 
+      <Login>
         <>
         
             <h1>SLEEP-TRACKER LOGIN HERE!</h1>
@@ -121,6 +130,7 @@ const LoginPage = (props) => {
           </form>
       
           </>
+          </Login>
     </Route>
       );
     };
