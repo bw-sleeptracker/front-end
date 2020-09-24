@@ -4,6 +4,7 @@ import { Route, Link , useHistory} from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
+import {axiosWithAuth} from '../utils/axiosWithAuth'
 
 const formSchema = yup.object().shape({
   username: yup.string().required("full username please"),
@@ -55,11 +56,11 @@ const LoginPage = (props) => {
   const formSubmit = (event) => {
       
     event.preventDefault();
-    axios
-    .post("https://sleep-tracker-backend.herokuapp.com/auth/login", formState,{withCredentials:true})
+    axiosWithAuth()
+    .post("https://sleep-tracker-backend.herokuapp.com/auth/login", formState )
     .then((response) => {
       console.log(response);
-
+        localStorage.setItem('token', response.data.token)
       
     })
     .catch((err) => {
@@ -70,7 +71,8 @@ const LoginPage = (props) => {
         username: "",
         password: ""
       });
-      history.push('/sleep-tracker')
+      history.push('/day-logs')
+    
   };
   const inputChange = (event) => {
     event.persist();

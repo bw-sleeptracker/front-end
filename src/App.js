@@ -16,6 +16,8 @@ import PrivateRoute from './components/PrivateRoute';
 import LoginPage from './components/LoginPage';
 import SignUpForm from './components/SignUpForm';
 import MainObject from './components/MainObject';
+import SleepLogPage from './components/SleepLogPage';
+import styled from 'styled-components';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -87,7 +89,7 @@ function App() {
           <LoginPage />
             </Route>
             <Route path='/register'>
-            <LoginPage />
+              <SignUpForm />
             </Route>
           {/* {/* need to make a component for SleepTrackList}
            <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
@@ -95,9 +97,10 @@ function App() {
             <BedTime/>
           </Route>
       </Switch>
-       <Route path="/sleep-tracker">
-        <MainObject />
-       </ Route> 
+       <PrivateRoute path="/sleep-tracker"component={MainObject}/>
+       
+       <PrivateRoute path="/day-logs"component={SleepLogPage}/>
+    
     </div>
 
 // second easier option..
@@ -116,4 +119,7 @@ function App() {
   );
 }
 
+const AppContainer = styled.div`
+  background: ##A8D0E6;
+`
 export default App;
