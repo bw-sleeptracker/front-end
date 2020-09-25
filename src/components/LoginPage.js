@@ -89,19 +89,10 @@ const LoginPage = (props) => {
 
   };
 
-  const Login = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3%;
-  color: #3d040b;
-    `;
   
   return (
     <Route> 
         <div className="login">
-         <Login>
             <h1>User Login!</h1>
             <form >
             <label htmlFor="name">
@@ -138,7 +129,6 @@ const LoginPage = (props) => {
                 LOG IN!
               </button>
           </form>
-          </Login>
           </div>
     </Route>
       );
