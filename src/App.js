@@ -20,6 +20,16 @@ import styled from 'styled-components';
 import Dashboard from './components/Dashboard';
 
 // import logo from './logo.svg';
+
+const FormHeader = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    background-color: #fff;
+    color: #3d040b
+    `;
 // import './App.css';
 
 function App() {
@@ -39,13 +49,14 @@ function App() {
 
   return (
 
+<FormHeader>
 
-  //first option...
-    <div className="App">
+<div className="App">
 
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-white">
 
 <Link to='/login'> Login </Link>
+<br></br>
 <Link to='/register'> Sign Up</Link>
 </nav>
 
@@ -56,35 +67,35 @@ function App() {
         </Route>
           <Route path='/login'>
           <LoginPage />
+          
             </Route>
             <Route path='/register'>
-              <SignUpForm />
+              <SignUpForm>
+               
+              </SignUpForm>
             </Route>
+            
           {/* {/* need to make a component for SleepTrackList}
            <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} /> */}
           <Route path="/bedtime">
             <BedTime/>
           </Route>
+          
       </Switch>
+           </div>
+           <div>
+      
        <PrivateRoute path="/sleep-tracker"component={MainObject}/>
        <PrivateRoute path="/day-logs"component={SleepLogPage}/>
 
        <PrivateRoute path="/dashboard"component={Dashboard}/>
 
     </div>
-
-
+</FormHeader>
+    
   );
 }
 
-const AppContainer = styled.div`
-  background: ##A8D0E6;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3%;
-  color: #3d040b;
-    `;
+
 
 export default App;

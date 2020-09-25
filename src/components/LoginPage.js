@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import * as yup from "yup";
-import axios from "axios";
 import styled from "styled-components";
 import {axiosWithAuth} from '../utils/axiosWithAuth'
 
@@ -56,10 +55,10 @@ const LoginPage = (props) => {
   justify-content: center;
   align-items: center;
   padding: 3%;
+  background-color: white;
   color: #3d040b;
     `;
-  // eslint-disable-next-line no-unused-vars
-  // user name and password
+ 
 const [name, setName] = useState([]);
 
   const formSubmit = (event) => {
@@ -96,6 +95,9 @@ const [name, setName] = useState([]);
 
   return (
     <Route> 
+      <Login>
+      <>
+
         <div className="login">
             <h1>User Login!</h1>
             <form >
@@ -136,6 +138,8 @@ const [name, setName] = useState([]);
             </Link>{" "}
           </form>
           </div>
+          </>
+    </Login>
     </Route>
       );
     };

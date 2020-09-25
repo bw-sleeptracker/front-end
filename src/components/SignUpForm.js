@@ -1,11 +1,21 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
+
 // dependancies
 import React, { useState } from "react";
 import { Route, Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
-// import styled from "styled-components";
+import styled from "styled-components";
+
+
+const FormHeader = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 3%;
+background-color: #fff;
+color: #3d040b
+`;
 
 // working on Yup
  const fromSchema = yup.object().shape({
@@ -71,28 +81,13 @@ export default function SignUpForm() {
     };
   
    
-    const FormHeader = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 3%;
-    color: #3d040b;
-    `;
-
     return (
-    <Route> 
-        <>
+      <Route> 
+      <FormHeader>
         
-        <h1>SLEEP-TRACKER SIGNUP HERE!</h1>
-        <div className="home-button">
-          <Link to="">
-            <button>Home</button>
-          </Link>{" "}
-        </div>
-        <br/><br/>
-        
-        <form className="info" >
+        <h1> SIGNUP HERE!</h1>
+        <br/>
+          <form className="info" >
             <label htmlFor="username">
           Username:
           <input
@@ -107,7 +102,7 @@ export default function SignUpForm() {
             <p className="error">{errorState.username}</p>
           ) : null}
             </label>
-              <br/><br/>
+              <br/>
             <label htmlFor="email">
           Email:
           <input
@@ -122,7 +117,7 @@ export default function SignUpForm() {
             <p className="error">{errorState.email}</p>
           ) : null}
             </label>
-            <br/> <br/>
+            <br/> 
 
             <label htmlFor="password">
           Password:
@@ -138,16 +133,21 @@ export default function SignUpForm() {
             <p className="error">{errorState.password}</p>
           ) : null}
             </label>
-            <br/><br/>
-
-     
-        <button className="formbutton" type="submit"onClick={submitHandler}>
+            <br/>
+          <button className="formbutton" type="submit"onClick={submitHandler}>
           Submit
-        </button>
-      
-         </form>
-     
-    </>
-  </Route>
+          </button><br></br>
+       <div className="home-button">
+          <Link to="">
+            <button>Go To Main</button>
+          </Link>{" "}
+          </div>
+          </form>
+          
+          </FormHeader>
+          </Route>
+          
+    
+  
     );
   }
