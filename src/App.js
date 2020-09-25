@@ -8,9 +8,7 @@ import BedTime from "./components/BedTime"
 import PrivateRoute from './components/PrivateRoute';
 
 // * styling
-// commented out because of no css folder
-// import './CSS/index.css';
-// import { bootstrap } from "react-router-dom";
+import { bootstrap } from "react-router-dom";
 
 // * components: 
 import LoginPage from './components/LoginPage';
@@ -48,38 +46,10 @@ function App() {
     <div className="App">
 
 <nav class="navbar navbar-dark bg-dark">
-{/* <Link to="/editsleep">Edit Sleep</Link>
-<Link to="/bedtime">Bed Time</Link> */}
 <Link to='/login'> Login </Link>
 <Link to='/register'> Sign Up</Link>
 </nav>
 
-      {/* <Switch>
-          <Route exact path='/'>
-          //   {/* * conditionally renders form based on local state isNewUser 
-          //   {isNewUser 
-          // //     ? 
-          // //       <SignUpForm /> 
-          // //     :
-          // //       <div>
-          // //         <button 
-          //         className='app-container__button'
-          //         onClick={launchSignUp}
-          //         > I'm a New User </button> 
-          //         <LoginPage />
-          //         <AddSleep/>
-          //       </div>
-          //   }
-          // </Route>
-          {/* need to make a component for SleepTrackList}
-          <PrivateRoute exact path='/sleeptracker' component={SleepTrackerList} />
-        */}
-      {/* <Link to='/login'>
-      Login
-      </Link> */}
-      {/* <Link to='/register'>
-      Sign Up
-      </Link> */}
       <Switch>
 
       <Route path='/editsleep'>
@@ -98,23 +68,10 @@ function App() {
           </Route>
       </Switch>
        <PrivateRoute path="/sleep-tracker"component={MainObject}/>
-       
        <PrivateRoute path="/day-logs"component={SleepLogPage}/>
-    
+       
     </div>
 
-// second easier option..
-    // <div className="App">
-    // <Route exact path="/">
-    //   <Login token={token} setToken={setToken} />
-    // </Route>  
-        
-    //     {/* 
-    //       Build a PrivateRoute component that will 
-    //       display SleepTrackerPage when you're authenticated 
-    //     */}
-    //     <PrivateRoute path="/sleeptracker-page" component={SleepTrackerPage} />
-    //   </div>
 
   );
 }
