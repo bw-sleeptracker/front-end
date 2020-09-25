@@ -1,32 +1,23 @@
+/* eslint-disable no-unused-vars */
 // * dependencies:
 import React, { useState } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 import EditSleep from "./components/EditSleep"
 import BedTime from "./components/BedTime"
-
+import './App.css';
 // * utility  comp
 import PrivateRoute from './components/PrivateRoute';
-
-// * styling
-<<<<<<< HEAD
-// import logo from './logo.svg';
-
-import { bootstrap } from "react-router-dom";
-=======
-// commented out because of no css folder
-// import './CSS/index.css';
 // import { bootstrap } from "react-router-dom";
->>>>>>> 6da8a686705caf06aa9e5c7dba64969354033d1a
-
+// * styling
+// commented out because of no css folder
 // * components: 
+
 import LoginPage from './components/LoginPage';
 import SignUpForm from './components/SignUpForm';
 import MainObject from './components/MainObject';
 import SleepLogPage from './components/SleepLogPage';
 import styled from 'styled-components';
-
-
-import './App.css';
+// import './src/App.css';
 
 function App() {
 
@@ -35,11 +26,7 @@ function App() {
 
   // second...
   // const [ token, setToken] = useState(localStorage.getItem("token") || null);
-
-
-
   // * sets local state if user selects new user
-
   // first option.. 
   const launchSignUp = (event) => {
     event.preventDefault()
@@ -127,5 +114,12 @@ function App() {
 
 const AppContainer = styled.div`
   background: ##A8D0E6;
-`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+  color: #3d040b;
+    `;
+
 export default App;

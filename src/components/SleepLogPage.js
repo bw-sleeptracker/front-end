@@ -1,12 +1,24 @@
 // * dependencies:
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import moment from "moment";
+// import "./App.css";
+
 import styled from 'styled-components';
 
+const Button = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    color: #3d040b;
+    `;
 //waiting the SleepLogList component to be made, or whatever it gets called.
 // import AddandEdit from "./AddandEdit";
+// eslint-disable-next-line no-lone-blocks
 {/* <SleepLogPageContainer> */}
 const SleepLogPage = (props) => {
     const [dayLogs, setDayLogs] = useState([]);

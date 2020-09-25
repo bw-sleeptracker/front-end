@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createStore,  applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk"
-import './index.css';
+import thunk from "redux-thunk";
+import './src/index.css';
 import  sleepReducer  from "./reducers/sleepReducer";
 
 import './index.css';
