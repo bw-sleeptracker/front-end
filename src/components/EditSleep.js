@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
@@ -11,19 +11,30 @@ const EditSleep = (props) => {
     day_score: "",
     bedtime_score: "",
   });
+  const [activeLog, setActiveLog]=useState()
   const { push } = useHistory();
+
+useEffect(()=>{
+  axiosWithAuth().get('day/current-user')
+  .then (res=> {
+    console.log(res.data)
+    setActiveLog(res.data[0])
+  })
+  .catch (err => console.log(err))
+},[])
 
   // changing all the valuse
   const changeHandler = (e) => {
     e.persist();
     setEntry({ ...entry, [e.target.name]: e.target.value });
   };
-console.log(props)
+  console.log(props);
   const submitHandeler = (e) => {
     e.preventDefault();
-    axiosWithAuth() .put(`day/${props.activeLogId}`, { ...entry, setEntry })
+    axiosWithAuth()
+      .put(`day/${activeLog.id}`, { ...entry, setEntry })
       .then((res) => {
-      console.log(res)
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -33,64 +44,66 @@ console.log(props)
   const deleteTime = (time) => {
     axiosWithAuth()
       .delete(`day/:id ${time.id}`)
-      .then((res) => {
-        console.log(res);
-        const deletTime = entry.filter((e) => e.id !== time.id);
-        deleteTime(deletTime);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      .then((res) => { console.log(res); })
+      .catch((err) => { console.log(err); });
   };
 
   return (
     <form className="form" onSubmit={submitHandeler}>
       <div className="form-group">
         <label>
-          <input type="time" value={entry.wake_time} name="wake_time" onChange={changeHandler} />
-        </label>
-        <label className="col-sm-2 col-form-label">
-          Wake Score
-          <select
-            class="fa"
-            name="wake_score"
-            value={entry.wake_score}
+          Wake Time
+          <input
+            className="bedTimeinput1"
+            type="time"
+            value={entry.wake_time}
+            name="wake_time"
             onChange={changeHandler}
-          >
-            <option value="">…Select One …</option>
-            <option value={1}>Bad </option>
-            <option value={2}> Meh</option>
-            <option value={3}>Okay</option>
-            <option value={4}>Good</option>
-          </select>
+          />
         </label>
 
-        <label className="col-sm-2 col-form-label">
-          Day Score
-          <select
-            class="fa"
-            name="day_score"
-            value={entry.day_score}
-            onChange={changeHandler}
-          >
-            <option value="">…Select One …</option>
-            <option value={1}>Bad </option>
-            <option value={2}> Meh</option>
-            <option value={3}>Okay</option>
-            <option value={4}>Good</option>
-          </select>
-        </label>
-
-        <div className="form-input-group-prepend">
-          <label className="col-sm-2 col-form-label">
-            Bedtime Score
+        <div className="score">
+        <label className="editlab" >
+            Wake Score:
             <select
-              class="fa"
+              className="bedTimeinput1"
+              name="wake_score"
+              value={entry.wake_score}
+              onChange={changeHandler}
+            >
+              <option value="">…select…</option>
+              <option value={1}>Bad </option>
+              <option value={2}> Meh</option>
+              <option value={3}>Okay</option>
+              <option value={4}>Good</option>
+            </select>
+          </label>
+
+          <label className="editlab" >
+            Day Score:
+            <select
+              className="bedTimeinput1"
+              name="day_score"
+              value={entry.day_score}
+              onChange={changeHandler}
+            >
+              <option value="">…select…</option>
+              <option value={1}>Bad </option>
+              <option value={2}> Meh</option>
+              <option value={3}>Okay</option>
+              <option value={4}>Good</option>
+            </select>
+          </label>
+
+          <label className="editlab" >
+          Bedtime Score:
+            <select
+              className="bedTimeinput1"
               name="bedtime_score"
               value={entry.bedtime_score}
               onChange={changeHandler}
             >
-              <option value="">…Select One …</option>
+              <option value="">…select…</option>
               <option value={1}>Bad </option>
               <option value={2}> Meh</option>
               <option value={3}>Okay</option>
@@ -98,17 +111,17 @@ console.log(props)
             </select>
           </label>
         </div>
-
-        <button className="btn btn-info" type="onubmit">
-          Edit
-        </button>
       </div>
+      <button className="bedtimeBtn1" type="onubmit">
+        {" "}
+        Edit
+      </button>
     </form>
   );
 };
-const mapStateToProps=state=>{
-  return{activeLogId:state.activeLogId}
-}
+const mapStateToProps = (state) => {
+  return { activeLogId: state.activeLogId };
+};
 const mapDispatchToPrios = {
   createSlep,
 };

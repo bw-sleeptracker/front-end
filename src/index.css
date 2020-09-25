@@ -1,46 +1,83 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
 
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: gray;
+  background-color: #595261;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.time{
+.time {
   display: flex;
   margin: 20px;
- 
 }
-.form{
-  margin: 20px;
+.form {
+  background-image: url("./image/photo-1493548578639-b0c241186eb0.jpg");
+  height: 40vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px;
+  width: 100%;
+}
 
-  
+.bedform {
+  background-image: url("./image/photo-1522030299830-16b8d3d049fe.jpg");
+  height: 40vh;
+  width: 100vw;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.date{
+.bedTimeinput {
+  margin-top: 10%;
+  margin-left: 10%;
+  background-color: #595261;
+  padding: 10px;
+  border: pink solid 2px;
+}
+
+.bedtimeBtn {
+  /* margin-top: -30px; */
+  margin-left: 40%;
+  border-radius: 10px;
+  padding: 10px;
+  color: teal;
+  background-color: black;
+  border: pink solid 2px;
+}
+.bedTimeinput1 {
+  margin-left: 12px;
+  padding: 10px;
+  border: #595261 solid 4px;
+}
+.score {
+  width: 100%;
+  padding: 30px;
+}
+.date {
   margin: 20px;
 }
-.btn{
+.btn {
   margin-left: 40%;
   padding: 20x;
 }
 
-nav{
+nav {
   display: flex;
   justify-content: flex-end;
   margin: 0 0 36px;
   padding: 12px;
-
 }
 
 a {
@@ -48,4 +85,34 @@ a {
   padding: 8px;
   color: black;
   font-weight: bold;
+}
+
+.bedtimeBtn1 {
+ 
+  margin-left: 40%;
+  border-radius: 5px;
+  padding: 10px;
+  width: 20%;
+  color: white;
+  font-size: 1.7rem;
+  background-color: #595261;
+  border:white solid 6px;
+}
+.select {
+  display: flex;
+}
+
+img {
+  width: 100px;
+  /* margin-left: 60%; */
+  height: 90px;
+  padding: 10px;
+}
+
+.editlab{
+margin-left: 20px;
+}
+
+.login{
+  background-color: white;
 }
