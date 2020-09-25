@@ -8,19 +8,8 @@ import moment from "moment";
 
 import styled from 'styled-components';
 
-const Button = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 3%;
-    color: #3d040b;
-    `;
-//waiting the SleepLogList component to be made, or whatever it gets called.
-// import AddandEdit from "./AddandEdit";
-// eslint-disable-next-line no-lone-blocks
-{/* <SleepLogPageContainer> */}
 const SleepLogPage = (props) => {
+  const [mostRecentLog, setMostRecentLog] = useState({});
     const [dayLogs, setDayLogs] = useState([]);
     const [weekLogs, setWeekLogs] = useState([]);
     const [monthLogs, setMonthLogs] = useState([]);
@@ -28,6 +17,17 @@ const SleepLogPage = (props) => {
 
         // fetch your sleep data from the server when the component mounts
         // set that data to the SleepLogList state property
+        const getMostRecent = () =>{
+          axiosWithAuth()
+          .get("day/current-user")
+          .then(res => {
+            console.log(res.data);
+            setMostRecentLog(res.data[0])
+          }).catch(err=> {
+            console.log(err);
+          });
+          setView('mostRecent')
+        }
 
 const getDays = () =>{
   axiosWithAuth()
@@ -80,6 +80,21 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
       )
     })
   )
+  const bedtime = new Date(`2020-09-18T${mostRecentLog.bedtime}`).getTime()
+const formattedBedTime = moment(bedtime).format('hh:mm:A')
+const wakeTime = new Date(`2020-09-18T${mostRecentLog.wake_time}`).getTime()
+const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
+
+  const mostRecentView = (
+        <div >
+          <p>Date: {moment(mostRecentLog.date).format("L")}</p>
+          <p>Bedtime: {formattedBedTime}</p>
+          <p>Wake Time: {formattedWakeTime}</p>
+          <p>Total Hours Slept: {mostRecentLog.total_hours_slept}</p>
+          <p>Average Quality: {mostRecentLog.average_quality}</p>
+        </div>
+      )
+
   const weekView = (
     weekLogs && 
     weekLogs.map(log =>{
@@ -112,26 +127,24 @@ const formattedWakeTime = moment(wakeTime).format('hh:mm:A')
     <Button onClick={getDays}>Show Days</Button>
     <Button onClick={getWeeks}>Show Weeks</Button>
     <Button onClick={getMonths}>Show Months</Button>
+    <Button onClick={getMostRecent}>Show Most Recent</Button>
     {
-       view==="day" ?(dayView): view==="week" ? (weekView): view==="month" ? (monthView): (<p>Select Logs You Want to</p>)
+       view==="day" ?(dayView): view==="week" ? (weekView): view==="month" ? (monthView): view==="mostRecent" ?(mostRecentView): (<p>Select Logs You Want to</p>)
     }
      
     </>
   );
 };
 
-// const SleepLog = styled.div`
-//   align-items: center;
-//   background: dodger-blue;
-// `
-// const Button = styled.button`
+
+const Button = styled.button`
   
-//   background: transparent;
-//   border-radius: 3px;
-//   border: 2px solid palevioletred;
-//   color: palevioletred;
-//   margin: 0 1em;
-//   padding: 0.25em 1em;
-// `
+  background: transparent;
+  border-radius: 3px;
+  border: 2px solid palevioletred;
+  color: palevioletred;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`
 export default SleepLogPage;
 

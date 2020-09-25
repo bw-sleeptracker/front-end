@@ -78,7 +78,7 @@ const LoginPage = (props) => {
         username: "",
         password: ""
       });
-      history.push('/day-logs')
+      history.push("/dashboard")
     
   };
 
@@ -95,11 +95,9 @@ const LoginPage = (props) => {
 
   return (
     <Route> 
-      <Login>
-        <>
-        
-            <h1>SLEEP-TRACKER LOGIN HERE!</h1>
-            <form onSubmit={formSubmit}>
+        <div className="login">
+            <h1>User Login!</h1>
+            <form >
             <label htmlFor="name">
               Name
               <input
@@ -136,9 +134,7 @@ const LoginPage = (props) => {
               </button>
             </Link>{" "}
           </form>
-      
-          </>
-          </Login>
+          </div>
     </Route>
       );
     };

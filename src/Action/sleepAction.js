@@ -21,11 +21,11 @@ export const createSlep=(day)=>(dispatch)=>{
     .post("day/current-user",day)
     .then(res=> {
         console.log(res)
-        dispatch ({type: "POST_SLEEP_SUCCESS",paylod:res.data})
+        dispatch ({type: "POST_SLEEP_SUCCESS",payload:res.data})
     })
    .catch(err=>{
        console.log(err)
-       dispatch ({type: "POST_SLEEP_ERROR",paylod:err})
+       dispatch ({type: "POST_SLEEP_ERROR",payload:err})
    })
 
 } 

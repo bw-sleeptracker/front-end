@@ -11,16 +11,22 @@ const handelSubmit=(e)=>{
 e.preventDefault();
 props.createSlep({bedtime:time})
 }
+
     return(
-       <form onSubmit={handelSubmit}>
-           <input 
+     
+       <form  onSubmit={handelSubmit}>
+           <div className="bedform">
+           
+           <input className="bedTimeinput"
            type="time" 
            value={time}
            onChange={(e)=>{
 setTime(e.target.value)
            }}
            />
-           <button type="submit">Create Sleep Log</button>
+           </div>
+           <button className="bedtimeBtn" type="submit">Create Sleep Log</button>
+
        </form>
     )
 }
