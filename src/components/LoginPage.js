@@ -71,7 +71,7 @@ const [name, setName] = useState([]);
         username: "",
         password: ""
       });
-      history.push('/day-logs')
+      history.push("/dashboard")
     
   };
   const inputChange = (event) => {
@@ -89,20 +89,11 @@ const [name, setName] = useState([]);
 
   };
 
-  const Login = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 3%;
-  color: #3d040b;
-    `;
   
   return (
     <Route> 
-        <>
-         {/* <Login> */}
-            <h1>SLEEP-TRACKER LOGIN HERE!</h1>
+        <div className="login">
+            <h1>User Login!</h1>
             <form >
             <label htmlFor="name">
               Username
@@ -138,8 +129,7 @@ const [name, setName] = useState([]);
                 LOG IN!
               </button>
           </form>
-          {/* </Login> */}
-          </>
+          </div>
     </Route>
       );
     };
