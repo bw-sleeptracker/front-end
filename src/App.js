@@ -7,7 +7,6 @@ import BedTime from "./components/BedTime"
 import './App.css';
 // * utility  comp
 import PrivateRoute from './components/PrivateRoute';
-// import { bootstrap } from "react-router-dom";
 // * styling
 import { bootstrap } from "react-router-dom";
 

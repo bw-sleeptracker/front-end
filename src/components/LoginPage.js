@@ -59,7 +59,8 @@ const LoginPage = (props) => {
   color: #3d040b;
     `;
   // eslint-disable-next-line no-unused-vars
-  const [name, setName] = useState([]);
+  // user name and password
+const [name, setName] = useState([]);
 
   const formSubmit = (event) => {
     event.preventDefault();
