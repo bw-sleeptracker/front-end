@@ -18,6 +18,7 @@ import SignUpForm from './components/SignUpForm';
 import MainObject from './components/MainObject';
 import SleepLogPage from './components/SleepLogPage';
 import styled from 'styled-components';
+import Dashboard from './components/Dashboard';
 
 // import logo from './logo.svg';
 // import './App.css';
@@ -47,7 +48,7 @@ function App() {
   //first option...
     <div className="App">
 
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-light">
 {/* <Link to="/editsleep">Edit Sleep</Link>
 <Link to="/bedtime">Bed Time</Link> */}
 <Link to='/login'> Login </Link>
@@ -100,6 +101,7 @@ function App() {
        <PrivateRoute path="/sleep-tracker"component={MainObject}/>
        
        <PrivateRoute path="/day-logs"component={SleepLogPage}/>
+       <PrivateRoute path="/dashboard"component={Dashboard}/>
     
     </div>
 

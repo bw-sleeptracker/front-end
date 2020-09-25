@@ -22,13 +22,13 @@ const initialState = {
             return {
                  ...state,
                  isLoading: false,
-                 sleepLog:action.paylod, activeLogId:action.paylod.id};
+                 sleepLog:action.payload, activeLogId:action.payload.id};
 
                  case "POST_SLEEP_ERROR":
                   return {
                        ...state,
                        isLoading: false,
-                       error:action.paylod };
+                       error:action.payload };
       default:
         return state;
     }
