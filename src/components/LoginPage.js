@@ -51,7 +51,7 @@ const LoginPage = (props) => {
 
   // eslint-disable-next-line no-unused-vars
   // user name and password
-const [name, setName] = useState([]);
+//   const [name, setName] = useState([]);
 
   const formSubmit = (event) => {
       
